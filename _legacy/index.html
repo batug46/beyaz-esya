@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechHome - Modern Beyaz Eşya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0A0A0B',
+                        card: '#161618',
+                        accent: '#2D31FA',
+                        surface: '#27272A',
+                    },
+                    fontFamily: {
+                        'syne': ['Syne', 'sans-serif'],
+                        'outfit': ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Syne:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0A0A0B;
+            --secondary: #161618;
+            --accent: #2D31FA;
+            --accent-glow: rgba(45, 49, 250, 0.4);
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #F4F4F5;
+            --text-dim: #A1A1AA;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--primary);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .font-syne {
+            font-family: 'Syne', sans-serif;
+        }
+
+        /* Noise Overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Glassmorphism Classes */
+        .premium-glass {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+        }
+
+        .premium-card {
+            background: var(--secondary);
+            border: 1px solid #27272A;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .premium-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes mesh-gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .mesh-bg {
+            background: linear-gradient(-45deg, #0A0A0B, #161618, #2D31FA22, #1E1B4B);
+            background-size: 400% 400%;
+            animation: mesh-gradient 15s ease infinite;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #fff 30%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .reveal-init {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        .reveal-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full z-[100] premium-glass border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 group cursor-pointer">
+                        <h1
+                            class="text-3xl font-black tracking-tighter text-white group-hover:text-accent transition-colors duration-500">
+                            TECH<span class="text-accent">HOME</span>
+                        </h1>
+                        <p class="text-[10px] text-accent uppercase tracking-[0.3em] font-bold mt-[-4px]">Industrial
+                            Luxury</p>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="hidden lg:block">
+                    <div class="ml-12 flex items-center space-x-8">
+                        <a href="#" class="nav-link text-sm font-semibold uppercase tracking-widest text-white">Ana
+                            Sayfa</a>
+                        <a href="#" class="nav-link text-sm font-semibold uppercase tracking-widest">Buzdolabı</a>
+                        <a href="#" class="nav-link text-sm font-semibold uppercase tracking-widest">Çamaşır</a>
+                        <a href="#" class="nav-link text-sm font-semibold uppercase tracking-widest">Bulaşık</a>
+                        <a href="#" class="nav-link text-sm font-semibold uppercase tracking-widest">Fırın</a>
+                        <a href="#"
+                            class="nav-link text-sm font-bold text-accent uppercase tracking-widest">Kampanyalar</a>
+                    </div>
+                </nav>
+
+                <!-- Search & Cart -->
+                <div class="flex items-center space-x-6">
+                    <div class="relative hidden xl:block">
+                        <input type="text" placeholder="Geleceği ara..."
+                            class="w-64 pl-4 pr-12 py-2.5 bg-white/5 border border-white/10 rounded-full focus:ring-1 focus:ring-accent focus:border-accent text-sm text-white placeholder-white/30 transition-all duration-300">
+                        <button
+                            class="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-accent transition-colors">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+
+                    <button class="relative p-2 text-white/80 hover:text-accent transition-all duration-300 group">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span
+                            class="absolute -top-1 -right-1 bg-accent text-white text-[10px] rounded-full h-5 w-5 flex items-center justify-center font-bold shadow-[0_0_15px_rgba(45,49,250,0.5)]">3</span>
+                    </button>
+
+                    <!-- Auth -->
+                    <div class="hidden lg:flex items-center space-x-4">
+                        <button
+                            class="accent-glow-btn bg-accent text-white px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">
+                            Giriş
+                        </button>
+                    </div>
+
+                    <button class="lg:hidden p-2 text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-20 mesh-bg overflow-hidden">
+        <!-- Decoration -->
+        <div
+            class="absolute top-[10%] right-[-5%] w-[40%] h-[40%] bg-accent/20 rounded-full blur-[120px] animate-pulse">
+        </div>
+        <div class="absolute bottom-[10%] left-[-5%] w-[30%] h-[30%] bg-blue-500/10 rounded-full blur-[100px]"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-10">
+                    <div class="space-y-6">
+                        <div
+                            class="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full">
+                            <span class="flex h-2 w-2 rounded-full bg-accent animate-ping"></span>
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-white/80">Yeni Teknoloji
+                                Geldi</span>
+                        </div>
+                        <h2 class="text-6xl lg:text-8xl font-black leading-[1.1] tracking-tighter text-white">
+                            Evini <span class="text-gradient">Yeniden</span> Tanımla.
+                        </h2>
+                        <p class="text-lg text-white/60 leading-relaxed max-w-lg font-medium">
+                            Premium tasarım ve akıllı teknolojinin buluştuğu noktada, yaşam kalitenizi zirveye taşıyan
+                            beyaz eşyaları keşfedin.
+                        </p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-6">
+                        <button
+                            class="accent-glow-btn bg-accent text-white px-10 py-5 rounded-full font-black uppercase tracking-widest text-sm shadow-2xl">
+                            Keşfetmeye Başla
+                        </button>
+                        <button
+                            class="premium-glass text-white px-10 py-5 rounded-full font-black uppercase tracking-widest text-sm border border-white/20 hover:bg-white/5 transition-all">
+                            Kampanyalar
+                        </button>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="pt-10 flex items-center space-x-12 border-t border-white/10">
+                        <div>
+                            <div class="text-3xl font-black text-white">50k+</div>
+                            <div class="text-[10px] text-white/40 uppercase font-black tracking-widest">Müşteri</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-black text-white">150+</div>
+                            <div class="text-[10px] text-white/40 uppercase font-black tracking-widest">Özel Ürün</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <div
+                        class="absolute -inset-4 bg-accent/20 rounded-[40px] blur-3xl opacity-0 group-hover:opacity-100 transition-duration-700">
+                    </div>
+                    <div class="relative premium-glass p-4 rounded-[40px] border border-white/10">
+                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                            alt="Modern Buzdolabı"
+                            class="w-full h-[500px] object-cover rounded-[32px] brightness-90 contrast-110 group-hover:scale-[1.02] transition-transform duration-700">
+
+                        <!-- Floating Badge -->
+                        <div
+                            class="absolute -bottom-6 -left-6 premium-glass p-6 rounded-3xl border border-accent/30 shadow-2xl">
+                            <div class="text-accent font-black text-2xl uppercase tracking-tighter">İndirim</div>
+                            <div class="text-white/50 text-xs font-bold uppercase tracking-widest">Sınırlı Süre</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="py-32 relative bg-dark overflow-hidden">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-full h-[500px] bg-accent/5 blur-[150px] rounded-full">
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+                <div class="max-w-2xl">
+                    <h3 class="text-5xl font-black text-white mb-6 uppercase tracking-tighter">
+                        Koleksiyonu <span class="text-accent">Keşfet</span>
+                    </h3>
+                    <p class="text-white/40 text-lg font-medium leading-relaxed">Modern mühendislik ve estetiğin
+                        mükemmel dengesi. Her kategori, yaşam alanınızı bir üst seviyeye taşımak için tasarlandı.</p>
+                </div>
+                <div class="flex space-x-4">
+                    <div class="h-1 w-20 bg-accent rounded-full mb-2"></div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Buzdolabı Kategorisi -->
+                <div class="group cursor-pointer">
+                    <div class="premium-card relative rounded-[32px] overflow-hidden">
+                        <div class="relative h-[400px]">
+                            <img src="https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Buzdolabı"
+                                class="w-full h-full object-cover grayscale-[0.5] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-dark via-dark/20 to-transparent opacity-80">
+                            </div>
+
+                            <div
+                                class="absolute inset-x-0 bottom-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                <div class="text-accent text-[10px] font-black uppercase tracking-[0.3em] mb-2">Soğutma
+                                </div>
+                                <h4 class="text-3xl font-black text-white mb-2 uppercase tracking-tighter">Buzdolabı
+                                </h4>
+                                <div
+                                    class="flex items-center text-white/40 text-xs font-bold uppercase tracking-widest group-hover:text-accent transition-colors">
+                                    <span>Görüntüle</span>
+                                    <i
+                                        class="fas fa-arrow-right ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Çamaşır Makinesi Kategorisi -->
+                <div class="group cursor-pointer">
+                    <div class="premium-card relative rounded-[32px] overflow-hidden">
+                        <div class="relative h-[400px]">
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Çamaşır Makinesi"
+                                class="w-full h-full object-cover grayscale-[0.5] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-dark via-dark/20 to-transparent opacity-80">
+                            </div>
+
+                            <div
+                                class="absolute inset-x-0 bottom-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                <div class="text-accent text-[10px] font-black uppercase tracking-[0.3em] mb-2">Temizlik
+                                </div>
+                                <h4 class="text-3xl font-black text-white mb-2 uppercase tracking-tighter">Çamaşır</h4>
+                                <div
+                                    class="flex items-center text-white/40 text-xs font-bold uppercase tracking-widest group-hover:text-accent transition-colors">
+                                    <span>Görüntüle</span>
+                                    <i
+                                        class="fas fa-arrow-right ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bulaşık Makinesi Kategorisi -->
+                <div class="group cursor-pointer">
+                    <div class="premium-card relative rounded-[32px] overflow-hidden">
+                        <div class="relative h-[400px]">
+                            <img src="https://images.pexels.com/photos/213162/pexels-photo-213162.jpeg"
+                                alt="Bulaşık Makinesi"
+                                class="w-full h-full object-cover grayscale-[0.5] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-dark via-dark/20 to-transparent opacity-80">
+                            </div>
+
+                            <div
+                                class="absolute inset-x-0 bottom-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                <div class="text-accent text-[10px] font-black uppercase tracking-[0.3em] mb-2">Hijyen
+                                </div>
+                                <h4 class="text-3xl font-black text-white mb-2 uppercase tracking-tighter">Bulaşık</h4>
+                                <div
+                                    class="flex items-center text-white/40 text-xs font-bold uppercase tracking-widest group-hover:text-accent transition-colors">
+                                    <span>Görüntüle</span>
+                                    <i
+                                        class="fas fa-arrow-right ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fırın & Ocak Kategorisi -->
+                <div class="group cursor-pointer">
+                    <div class="premium-card relative rounded-[32px] overflow-hidden">
+                        <div class="relative h-[400px]">
+                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Fırın & Ocak"
+                                class="w-full h-full object-cover grayscale-[0.5] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-dark via-dark/20 to-transparent opacity-80">
+                            </div>
+
+                            <div
+                                class="absolute inset-x-0 bottom-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                <div class="text-accent text-[10px] font-black uppercase tracking-[0.3em] mb-2">
+                                    Gastronomi</div>
+                                <h4 class="text-3xl font-black text-white mb-2 uppercase tracking-tighter">Fırın & Ocak
+                                </h4>
+                                <div
+                                    class="flex items-center text-white/40 text-xs font-bold uppercase tracking-widest group-hover:text-accent transition-colors">
+                                    <span>Görüntüle</span>
+                                    <i
+                                        class="fas fa-arrow-right ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="py-32 bg-secondary relative overflow-hidden">
+        <!-- Decoration -->
+        <div
+            class="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/5 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2">
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-24">
+                <span class="text-accent text-xs font-black uppercase tracking-[0.4em] mb-4 block">Limited
+                    Edition</span>
+                <h3 class="text-5xl lg:text-7xl font-black text-white mb-8 tracking-tighter uppercase">
+                    Öne Çıkan <span class="text-gradient">Modeller</span>
+                </h3>
+            </div>
+
+            <!-- Innovative Asymmetric Grid -->
+            <div class="grid grid-cols-12 gap-6">
+                <!-- Large Featured Product (spans 6 columns) -->
+                <div class="col-span-12 lg:col-span-6 group">
+                    <div class="premium-card relative rounded-[40px] overflow-hidden h-[600px]">
+                        <div class="absolute inset-0">
+                            <img src="https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                                alt="Smart Buzdolabı"
+                                class="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000">
+                            <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent"></div>
+                        </div>
+
+                        <div class="absolute inset-0 p-12 flex flex-col justify-end">
+                            <div class="flex items-center gap-4 mb-6">
+                                <span
+                                    class="bg-accent text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-2xl">Premium</span>
+                                <span class="text-white/40 text-xs font-bold uppercase tracking-widest">Model
+                                    2024</span>
+                            </div>
+                            <h4 class="text-4xl lg:text-5xl font-black text-white mb-4 uppercase tracking-tighter">Smart
+                                <span class="text-accent">Pro</span>
+                            </h4>
+                            <p class="text-white/60 text-lg mb-8 max-w-md font-medium">Yapay zeka desteğiyle
+                                gıdalarınızı taptaze tutan devrimsel teknoloji.</p>
+
+                            <div class="flex items-center gap-8">
+                                <button
+                                    class="accent-glow-btn bg-accent text-white px-8 py-4 rounded-full font-black uppercase tracking-widest text-xs">Sepete
+                                    Ekle</button>
+                                <div class="text-3xl font-black text-white tracking-tighter">₺12.999</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vertical Product Cards (Right Side) -->
+                <div class="col-span-12 lg:col-span-6 flex flex-col gap-6">
+                    <!-- Product 2 - Washing Machine -->
+                    <div class="group relative premium-card rounded-[32px] overflow-hidden h-72">
+                        <div class="flex h-full">
+                            <div class="w-2/5 relative overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    alt="EcoWash"
+                                    class="w-full h-full object-cover grayscale-[0.5] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
+                            </div>
+                            <div class="w-3/5 p-8 flex flex-col justify-center">
+                                <div class="text-accent text-[10px] font-black uppercase tracking-widest mb-2">
+                                    Efficiency</div>
+                                <h4 class="text-2xl font-black text-white mb-4 uppercase tracking-tighter">EcoWash <span
+                                        class="text-white/40">9KG</span></h4>
+                                <div class="flex items-center justify-between mt-auto">
+                                    <span class="text-2xl font-black text-white tracking-tighter">₺8.499</span>
+                                    <button
+                                        class="w-10 h-10 bg-accent text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 - Dishwasher -->
+                    <div class="group relative premium-card rounded-[32px] overflow-hidden h-72">
+                        <div class="flex h-full">
+                            <div class="w-2/5 relative overflow-hidden">
+                                <img src="https://images.pexels.com/photos/213162/pexels-photo-213162.jpeg"
+                                    alt="CleanMax"
+                                    class="w-full h-full object-cover grayscale-[0.5] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
+                            </div>
+                            <div class="w-3/5 p-8 flex flex-col justify-center">
+                                <div class="text-accent text-[10px] font-black uppercase tracking-widest mb-2">Ultra
+                                    Clean</div>
+                                <h4 class="text-2xl font-black text-white mb-4 uppercase tracking-tighter">CleanMax
+                                    <span class="text-white/40">PRO</span>
+                                </h4>
+                                <div class="flex items-center justify-between mt-auto">
+                                    <span class="text-2xl font-black text-white tracking-tighter">₺6.999</span>
+                                    <button
+                                        class="w-10 h-10 bg-accent text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View All Products CTA -->
+            <div class="text-center mt-16">
+                <div class="inline-flex items-center gap-4">
+                    <div class="h-px w-20 bg-gradient-to-r from-transparent to-accent"></div>
+                    <button
+                        class="group relative bg-white border-2 border-accent text-accent hover:bg-accent hover:text-white px-10 py-4 rounded-2xl font-bold transition-all duration-500 shadow-lg hover:shadow-xl overflow-hidden">
+                        <span class="relative z-10 flex items-center justify-center gap-2">
+                            Tüm Ürünleri Görüntüle
+                            <i
+                                class="fas fa-arrow-right group-hover:translate-x-1 transition-transform duration-300"></i>
+                        </span>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-accent to-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left">
+                        </div>
+                    </button>
+                    <div class="h-px w-20 bg-gradient-to-l from-transparent to-accent"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern Advantages Section -->
+    <section class="py-32 relative bg-dark overflow-hidden">
+        <!-- Advanced Background -->
+        <div class="absolute inset-0 mesh-bg opacity-30"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-24">
+                <span class="text-accent text-xs font-black uppercase tracking-[0.4em] mb-4 block">Geleceğin
+                    Standartları</span>
+                <h3 class="text-5xl lg:text-7xl font-black text-white mb-8 tracking-tighter uppercase">Neden <span
+                        class="text-accent">Techhome?</span></h3>
+                <p class="text-white/40 text-lg font-medium max-w-2xl mx-auto leading-relaxed">Modern teknolojiyi
+                    evinizin kalbine taşıyoruz.</p>
+            </div>
+
+            <!-- Revolutionary Grid Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8">
+                <!-- Advantage Cards -->
+                <div class="xl:col-span-2 group">
+                    <div
+                        class="premium-card p-12 rounded-[40px] h-full flex flex-col justify-center relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-accent/10 blur-3xl"></div>
+                        <div
+                            class="w-20 h-20 bg-accent rounded-3xl flex items-center justify-center mb-10 shadow-[0_0_30px_rgba(45,49,250,0.3)]">
+                            <i class="fas fa-rocket text-white text-3xl"></i>
+                        </div>
+                        <h4 class="text-4xl font-black text-white mb-6 uppercase tracking-tighter">Işık Hızında <span
+                                class="text-accent">Deneyim</span></h4>
+                        <p class="text-white/40 text-lg font-medium leading-relaxed">Gelişmiş mühendislik ve optimize
+                            edilmiş sistemlerle saniyeler içinde sonuç alın.</p>
+                    </div>
+                </div>
+
+                <div class="group">
+                    <div
+                        class="premium-card p-10 rounded-[40px] h-full text-center flex flex-col items-center justify-center">
+                        <div
+                            class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mb-8 border border-white/10">
+                            <i class="fas fa-shield-alt text-white text-2xl"></i>
+                        </div>
+                        <h4 class="text-2xl font-black text-white mb-4 uppercase tracking-tighter">Ultra Güvenlik</h4>
+                        <p class="text-white/40 text-sm font-medium">En üst düzey şifreleme ile verileriniz koruma
+                            altında.</p>
+                    </div>
+                </div>
+
+                <div class="group">
+                    <div
+                        class="premium-card p-10 rounded-[40px] h-full text-center flex flex-col items-center justify-center">
+                        <div
+                            class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mb-8 border border-white/10">
+                            <i class="fas fa-mobile-alt text-white text-2xl"></i>
+                        </div>
+                        <h4 class="text-2xl font-black text-white mb-4 uppercase tracking-tighter">Mobil Uyum</h4>
+                        <p class="text-white/40 text-sm font-medium">Her cihazda kusursuz ve akıcı görüntüleme keyfi.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Real-time Analytics -->
+                <div class="group">
+                    <div
+                        class="premium-card p-10 rounded-[40px] h-full text-center flex flex-col items-center justify-center">
+                        <div
+                            class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mb-8 border border-white/10">
+                            <i class="fas fa-chart-line text-white text-2xl"></i>
+                        </div>
+                        <h4 class="text-2xl font-black text-white mb-4 uppercase tracking-tighter">Anlık Veri</h4>
+                        <p class="text-white/40 text-sm font-medium">Gerçek zamanlı stok ve fiyat güncellemeleri.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom CTA Section -->
+            <div class="text-center mt-20">
+                <div class="inline-flex items-center gap-6">
+                    <div class="h-px w-24 bg-gradient-to-r from-transparent via-accent to-transparent"></div>
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-4 bg-gradient-to-r from-accent via-blue-500 to-accent rounded-2xl blur-lg group-hover:blur-xl transition-all duration-500 opacity-30 group-hover:opacity-50">
+                        </div>
+                        <button
+                            class="relative glass-card text-white border-2 border-accent/50 hover:border-accent px-10 py-4 rounded-2xl font-bold transition-all duration-500 backdrop-blur-xl hover:scale-105">
+                            <span class="flex items-center justify-center gap-2">
+                                Platformu Keşfet
+                                <i
+                                    class="fas fa-arrow-right group-hover:translate-x-1 transition-transform duration-300"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="h-px w-24 bg-gradient-to-l from-transparent via-accent to-transparent"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-32 bg-secondary relative overflow-hidden">
+        <div class="absolute inset-0 mesh-bg opacity-10"></div>
+        <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-5xl font-black text-white mb-6 uppercase tracking-tighter">İnovasyonu <span
+                    class="text-accent">Takip Edin</span></h3>
+            <p class="text-white/40 text-lg mb-12 max-w-2xl mx-auto font-medium">Yeni modellerimiz ve özel tasarım
+                koleksiyonlarımızdan ilk siz haberdar olun.</p>
+
+            <div class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+                <input type="email" placeholder="E-posta"
+                    class="flex-1 px-8 py-5 rounded-full border border-white/10 bg-white/5 text-white placeholder-white/20 focus:outline-none focus:border-accent transition-all font-bold">
+                <button
+                    class="accent-glow-btn bg-accent text-white px-10 py-5 rounded-full font-black uppercase tracking-widest text-xs shadow-2xl">
+                    Abone Ol
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-24 border-t border-white/5 relative overflow-hidden">
+        <div class="absolute bottom-0 left-0 w-full h-[500px] bg-accent/5 blur-[150px] rounded-full translate-y-1/2">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-20">
+                <div class="md:col-span-1">
+                    <h4 class="text-3xl font-black mb-8 uppercase tracking-tighter text-gradient">TechHome</h4>
+                    <p class="text-white/40 mb-10 leading-relaxed font-medium">Geleceğin teknolojisini estetikle
+                        buluşturan beyaz eşya deneyimi.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-white/40 hover:text-accent transition-colors"><i
+                                class="fab fa-facebook text-xl"></i></a>
+                        <a href="#" class="text-white/40 hover:text-accent transition-colors"><i
+                                class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-white/40 hover:text-accent transition-colors"><i
+                                class="fab fa-twitter text-xl"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h5 class="text-sm font-black mb-8 uppercase tracking-[0.3em] text-accent">Koleksiyon</h5>
+                    <ul class="space-y-4">
+                        <li><a href="#"
+                                class="text-white/40 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Buzdolabı</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-white/40 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Çamaşır</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-white/40 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Bulaşık</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-white/40 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Fırın</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-sm font-black mb-8 uppercase tracking-[0.3em] text-accent">Destek</h5>
+                    <ul class="space-y-4">
+                        <li><a href="#"
+                                class="text-white/40 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">İrtibat</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-white/40 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Sipariş</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-white/40 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">İade</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-sm font-black mb-8 uppercase tracking-[0.3em] text-accent">Bize Ulaşın</h5>
+                    <div class="space-y-6 text-white/60">
+                        <p class="text-sm font-bold">İstanbul, TR</p>
+                        <p class="text-sm font-bold">0850 123 45 67</p>
+                        <p class="text-accent text-sm font-bold underline decoration-2 underline-offset-8">
+                            info@techhome.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 mt-20 pt-10 text-center">
+                <p class="text-white/20 text-[10px] font-black uppercase tracking-[0.5em]">&copy; 2024 TechHome
+                    Industrial Design.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
