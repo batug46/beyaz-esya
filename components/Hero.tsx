@@ -20,10 +20,10 @@ export default function Hero() {
                                     Yeni Teknoloji Geldi
                                 </span>
                             </div>
-                            <h2 className="text-5xl sm:text-7xl lg:text-8xl font-black leading-[1.1] tracking-tighter text-[var(--text-main)]">
+                            <h2 className="text-4xl sm:text-7xl lg:text-8xl font-black leading-[1.1] tracking-tighter text-[var(--text-main)] text-center lg:text-left">
                                 Evini <span className="text-gradient">Yeniden</span> Tanımla.
                             </h2>
-                            <p className="text-base sm:text-lg text-[var(--text-dim)] leading-relaxed max-w-lg mx-auto lg:mx-0 font-medium">
+                            <p className="text-sm sm:text-lg text-[var(--text-dim)] leading-relaxed max-w-lg mx-auto lg:mx-0 font-medium text-center lg:text-left">
                                 Premium tasarım ve akıllı teknolojinin buluştuğu noktada, yaşam kalitenizi zirveye taşıyan beyaz eşyaları keşfedin.
                             </p>
                         </div>

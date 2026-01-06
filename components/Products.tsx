@@ -45,9 +45,9 @@ export default function Products() {
             <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/5 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2"></div>
 
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-16 sm:mb-24">
-                    <span className="text-accent text-xs font-black uppercase tracking-[0.4em] mb-4 block">Limited Edition</span>
-                    <h3 className="text-4xl sm:text-5xl lg:text-7xl font-black text-[var(--text-main)] mb-6 tracking-tighter uppercase">
+                <div className="text-center mb-16 sm:mb-24 px-4">
+                    <span className="text-accent text-[10px] sm:text-xs font-black uppercase tracking-[0.4em] mb-4 block">Limited Edition</span>
+                    <h3 className="text-3xl sm:text-5xl lg:text-7xl font-black text-[var(--text-main)] mb-6 tracking-tighter uppercase break-words px-2">
                         Öne Çıkan <span className="text-gradient">Modeller</span>
                     </h3>
                 </div>
@@ -55,7 +55,7 @@ export default function Products() {
                 {filteredProducts.length === 0 ? (
                     <div className="text-center py-20 px-4">
                         <div className="text-6xl mb-6">🔍</div>
-                        <h4 className="text-2xl font-bold text-[var(--text-main)] mb-2 uppercase tracking-tight">Ürün Bulunamadı</h4>
+                        <h4 className="text-xl sm:text-2xl font-bold text-[var(--text-main)] mb-2 uppercase tracking-tight">Ürün Bulunamadı</h4>
                         <p className="text-[var(--text-dim)] font-medium">Lütfen farklı bir kelime ile aramayı deneyin.</p>
                     </div>
                 ) : (
@@ -74,38 +74,38 @@ export default function Products() {
                                             <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-transparent to-transparent opacity-90"></div>
                                         </div>
 
-                                        <div className="relative p-8 lg:p-12 flex flex-col justify-end h-full">
-                                            <div className="flex items-center gap-4 mb-6">
+                                        <div className="relative p-8 lg:p-12 flex flex-col justify-end h-full text-center lg:text-left">
+                                            <div className="flex items-center justify-center lg:justify-start gap-4 mb-6">
                                                 <span className="bg-accent text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-2xl">{product.type}</span>
-                                                <span className="text-[var(--text-dim)] text-xs font-bold uppercase tracking-widest">{product.tag}</span>
+                                                <span className="text-[var(--text-dim)] text-[10px] font-bold uppercase tracking-widest">{product.tag}</span>
                                             </div>
-                                            <h4 className="text-4xl lg:text-6xl font-black text-[var(--text-main)] mb-4 uppercase tracking-tighter">
+                                            <h4 className="text-3xl sm:text-4xl lg:text-6xl font-black text-[var(--text-main)] mb-4 uppercase tracking-tighter break-words">
                                                 {product.name.split(' ')[0]} <span className="text-accent">{product.name.split(' ')[1] || ""}</span>
                                             </h4>
-                                            <p className="text-[var(--text-dim)] text-lg mb-8 max-w-md font-medium">{product.desc}</p>
+                                            <p className="text-[var(--text-dim)] text-base sm:text-lg mb-8 max-w-md mx-auto lg:mx-0 font-medium">{product.desc}</p>
 
-                                            <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-10">
-                                                <div className="accent-glow-btn bg-accent text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-xs flex items-center gap-3">
+                                            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-10">
+                                                <div className="accent-glow-btn bg-accent text-white px-8 py-4 sm:px-10 sm:py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] sm:text-xs flex items-center gap-3">
                                                     <ShoppingCart size={18} />
                                                     Sepete Ekle
                                                 </div>
-                                                <div className="text-4xl font-black text-[var(--text-main)] tracking-tighter">{product.price}</div>
+                                                <div className="text-3xl sm:text-4xl font-black text-[var(--text-main)] tracking-tighter">{product.price}</div>
                                             </div>
                                         </div>
                                     </Link>
                                 ) : (
-                                    <Link href={`/products/${product.id}`} className="group relative premium-card rounded-[32px] overflow-hidden h-[294px] block mb-0">
+                                    <Link href={`/products/${product.id}`} className="group relative premium-card rounded-[32px] overflow-hidden h-auto sm:h-[294px] block mb-0">
                                         <div className="flex h-full flex-col sm:flex-row">
-                                            <div className="h-2/5 sm:h-full sm:w-2/5 relative overflow-hidden">
+                                            <div className="h-48 sm:h-full sm:w-2/5 relative overflow-hidden">
                                                 <img src={product.image} alt={product.name} className="w-full h-full object-cover grayscale-[0.3] dark:grayscale-[0.5] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
                                             </div>
-                                            <div className="h-3/5 sm:h-full sm:w-3/5 p-6 lg:p-8 flex flex-col justify-center">
-                                                <div className="text-accent text-[10px] font-black uppercase tracking-widest mb-2">{product.type}</div>
-                                                <h4 className="text-2xl font-black text-[var(--text-main)] mb-4 uppercase tracking-tighter">{product.name.split(' ')[0]} <span className="text-[var(--text-dim)]">{product.name.split(' ').slice(1).join(' ')}</span></h4>
+                                            <div className="p-6 lg:p-8 flex flex-col justify-center sm:w-3/5 text-center sm:text-left">
+                                                <div className="text-accent text-[9px] sm:text-[10px] font-black uppercase tracking-widest mb-2">{product.type}</div>
+                                                <h4 className="text-xl sm:text-2xl font-black text-[var(--text-main)] mb-3 sm:mb-4 uppercase tracking-tighter">{product.name.split(' ')[0]} <span className="text-[var(--text-dim)]">{product.name.split(' ').slice(1).join(' ')}</span></h4>
                                                 <div className="flex items-center justify-between mt-auto">
-                                                    <span className="text-2xl font-black text-[var(--text-main)] tracking-tighter">{product.price}</span>
-                                                    <div className="w-12 h-12 bg-accent text-white rounded-2xl flex items-center justify-center hover:scale-110 transition-transform shadow-lg shadow-accent/20">
-                                                        <Plus size={20} strokeWidth={3} />
+                                                    <span className="text-xl sm:text-2xl font-black text-[var(--text-main)] tracking-tighter">{product.price}</span>
+                                                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-accent text-white rounded-xl sm:rounded-2xl flex items-center justify-center hover:scale-110 transition-transform shadow-lg shadow-accent/20">
+                                                        <Plus size={18} strokeWidth={3} />
                                                     </div>
                                                 </div>
                                             </div>

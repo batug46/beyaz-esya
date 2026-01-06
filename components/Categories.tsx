@@ -32,10 +32,10 @@ export default function Categories() {
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 sm:mb-20 gap-8 text-center md:text-left">
                     <div className="max-w-2xl mx-auto md:mx-0">
-                        <h3 className="text-4xl sm:text-5xl font-black text-[var(--text-main)] mb-6 uppercase tracking-tighter">
+                        <h3 className="text-3xl sm:text-5xl font-black text-[var(--text-main)] mb-6 uppercase tracking-tighter text-center md:text-left">
                             Koleksiyonu <span className="text-accent">Keşfet</span>
                         </h3>
-                        <p className="text-[var(--text-dim)] text-lg font-medium leading-relaxed">
+                        <p className="text-[var(--text-dim)] text-base sm:text-lg font-medium leading-relaxed text-center md:text-left">
                             Modern mühendislik ve estetiğin mükemmel dengesi. Her kategori, yaşam alanınızı bir üst seviyeye taşımak için tasarlandı.
                         </p>
                     </div>

@@ -14,22 +14,22 @@ export default function AboutPage() {
 
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <span className="text-accent text-xs font-black uppercase tracking-[0.4em] mb-6 block">Kimiz Biz?</span>
-                    <h1 className="text-4xl sm:text-6xl lg:text-8xl font-black text-[var(--text-main)] mb-10 tracking-tighter uppercase">
+                    <h1 className="text-3xl sm:text-6xl lg:text-8xl font-black text-[var(--text-main)] mb-10 tracking-tighter uppercase break-words px-2">
                         Hakkımızda
                     </h1>
-                    <p className="text-[var(--text-dim)] text-xl max-w-3xl mx-auto leading-relaxed font-medium">
+                    <p className="text-[var(--text-dim)] text-base sm:text-xl max-w-3xl mx-auto leading-relaxed font-medium">
                         TechHome, 20 yılı aşkın süredir beyaz eşya dünyasında inovasyonun ve estetiğin öncüsü olmayı hedefleyen bir tutkunun eseridir.
                     </p>
                 </div>
             </section>
 
             {/* Content Section */}
-            <section className="py-32 bg-[var(--background)]">
+            <section className="py-24 sm:py-32 bg-[var(--background)]">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-                        <div className="space-y-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                        <div className="space-y-8 text-center lg:text-left">
                             <h2 className="text-2xl sm:text-4xl font-black text-[var(--text-main)] uppercase tracking-tighter">Vizyonumuz & <span className="text-accent">Misyonumuz</span></h2>
-                            <p className="text-[var(--text-dim)] text-lg leading-relaxed">
+                            <p className="text-[var(--text-dim)] text-base sm:text-lg leading-relaxed">
                                 Sadece birer "beyaz eşya" üretmiyoruz. Biz, evinizin ruhunu tamamlayan, günlük yaşamınızı kolaylaştırırken estetikten ödün vermeyen teknolojik sanat eserleri tasarlıyoruz.
                             </p>
                             <div className="grid grid-cols-2 gap-8 pt-6">

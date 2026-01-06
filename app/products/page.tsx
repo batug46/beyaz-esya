@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import { Plus } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export default function ProductsPage() {
@@ -14,25 +15,25 @@ export default function ProductsPage() {
     ];
 
     return (
-        <main className="bg-dark min-h-screen">
+        <main className="bg-[var(--background)] min-h-screen transition-colors duration-500">
             <Header />
             <ScrollReveal />
 
             {/* Hero Header */}
-            <section className="pt-40 pb-20 mesh-bg border-b border-white/5">
+            <section className="pt-40 pb-20 mesh-bg border-b border-[var(--glass-border)] overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <span className="text-accent text-xs font-black uppercase tracking-[0.4em] mb-4 block">Koleksiyon</span>
-                    <h1 className="text-6xl lg:text-8xl font-black text-white mb-8 tracking-tighter uppercase">
+                    <span className="text-accent text-[10px] sm:text-xs font-black uppercase tracking-[0.4em] mb-4 block">Koleksiyon</span>
+                    <h1 className="text-3xl sm:text-6xl lg:text-8xl font-black text-[var(--text-main)] mb-8 tracking-tighter uppercase break-words px-2">
                         TÜM <span className="text-gradient">MODEL</span>LER
                     </h1>
-                    <p className="text-white/40 text-lg max-w-2xl mx-auto font-medium">
+                    <p className="text-[var(--text-dim)] text-base sm:text-lg max-w-2xl mx-auto font-medium">
                         Endüstriyel zerafet ve ileri mühendislikle tanışın. Her bir ürünümüz, yaşam standartlarınızı geleceğe taşımak için tasarlandı.
                     </p>
                 </div>
             </section>
 
             {/* Product Grid */}
-            <section className="py-24 bg-dark">
+            <section className="py-24 bg-[var(--background)] overflow-hidden"> {/* Added overflow-hidden here */}
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
                         {allProducts.map((product) => (
@@ -46,14 +47,16 @@ export default function ProductsPage() {
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent"></div>
 
-                                        <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                                            <div className="text-accent text-[10px] font-black uppercase tracking-[0.3em] mb-2">{product.category}</div>
-                                            <h4 className="text-3xl font-black text-white mb-4 uppercase tracking-tighter">{product.name}</h4>
+                                        <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end text-center"> {/* Ensured text-center for mobile */}
+                                            <div className="text-accent text-[9px] sm:text-[10px] font-black uppercase tracking-[0.3em] mb-2">{product.category}</div>
+                                            <h4 className="text-xl sm:text-3xl font-black text-white mb-3 sm:mb-4 uppercase tracking-tighter leading-tight break-words"> {/* Original font sizes for name */}
+                                                {product.name}
+                                            </h4>
 
-                                            <div className="flex items-center justify-between mt-4">
-                                                <div className="text-2xl font-black text-white tracking-tighter">₺{product.price}</div>
-                                                <div className="w-12 h-12 bg-accent/20 border border-accent/30 text-accent rounded-full flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-all shadow-lg">
-                                                    <i className="fas fa-plus"></i>
+                                            <div className="flex items-center justify-center sm:justify-between mt-4"> {/* Centered on mobile, justified on sm+ */}
+                                                <div className="text-xl sm:text-2xl font-black text-white tracking-tighter">₺{product.price}</div> {/* Original font sizes for price */}
+                                                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-accent/20 border border-accent/30 text-accent rounded-full flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-all shadow-lg">
+                                                    <Plus size={18} />
                                                 </div>
                                             </div>
                                         </div>
